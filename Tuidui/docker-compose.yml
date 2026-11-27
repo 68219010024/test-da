@@ -1,0 +1,71 @@
+networks:
+  iot_net:
+    external: true
+  app_net:
+    external: true
+
+volumes:
+  iot_db_data:
+    external: true
+  emqx_data:
+    external: true
+  emqx_log:
+    external: true
+  nodered_data:
+    external: true
+
+services:
+  db-iot:
+    image: mysql:8.0
+    container_name: db-iot
+    restart: unless-stopped
+    command: >
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOTPASSWORD: rootpassword
+      MYSQL_DATABASE: iot_db
+      MYSQL_USER: iot_user
+      MYSQL_PASSWORD: iot_password
+      TZ: Asia/Bangkok
+    volumes:
+      - iot_db_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-prootpassword"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    networks:
+      - iot_db
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db-iot
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8081:80"
+    depends_on:
+      db-iot:
+        condition: service_healthy
+    networks:
+      - iot_net
+
+  node-red:
+    image: nodered/node-red:latest
+    container_name: node-red
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Bangkok
+    ports:
+      - "1880:1880"
+    volumes:
+      - 
+    depends_on:
+      db-iot:
+        condition: service_healthy
+    

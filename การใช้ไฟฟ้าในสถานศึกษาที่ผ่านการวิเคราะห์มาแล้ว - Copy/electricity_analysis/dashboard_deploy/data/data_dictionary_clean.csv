@@ -1,0 +1,28 @@
+﻿column,description,type,unit,example
+reading_id,รหัสรายการอ่านมิเตอร์ (คีย์หลัก),text,-,E0001001
+timestamp,เวลาเริ่มช่วง 1 ชั่วโมง เวลาไทย (ค.ศ.),datetime,yyyy-mm-dd hh:mm:ss,2025-01-02 01:00:00
+date,วันที่,text,yyyy-mm-dd,2025-01-02
+month,เดือน 1-12,int,-,1
+hour,ชั่วโมงของวัน 0-23,int,-,1
+dow,วันในสัปดาห์ 0=จันทร์ ... 6=อาทิตย์,int,-,3
+day_type,ประเภทวัน weekday/weekend (เสาร์-อาทิตย์ ไม่มีปฏิทินวันหยุดนักขัตฤกษ์),category,-,weekday
+day_type_th,ประเภทวัน ภาษาไทย,category,-,วันทำการ
+is_off_hours,นอกเวลาใช้งาน = จำนวนคนเป็น 0 (ค่าตั้งต้น),bool,-,True
+meter_id,รหัสมิเตอร์,category,-,M001
+room_id,รหัสห้อง,category,-,B01-R01
+building_id,รหัสอาคาร,category,-,B01
+building_name,ชื่ออาคาร,category,-,อาคารเรียน 1
+room_type,ประเภทห้อง,category,-,ห้องเรียน
+area_m2,พื้นที่ห้อง,int,ตร.ม.,109
+capacity_people,ความจุห้อง,int,คน,30
+air_conditioner_count,จำนวนเครื่องปรับอากาศ,int,เครื่อง,3
+occupancy_people,จำนวนคนโดยประมาณในชั่วโมงนั้น,int,คน,0
+energy_kwh,พลังงานรายชั่วโมงตามไฟล์ดิบ (มีค่าว่าง ติดลบ ค่าสูงผิดปกติ),float,kWh,0.07
+energy_clean,พลังงานรายชั่วโมงหลังทำความสะอาด ใช้วิเคราะห์,float,kWh,0.07
+cell_median,ค่ากลางปกติของมิเตอร์เดียวกัน ชั่วโมงเดียวกัน ประเภทวันเดียวกัน,float,kWh,0.079
+flag_missing,ค่าเดิมว่าง,bool,-,False
+flag_negative,ค่าเดิมติดลบ,bool,-,False
+flag_outlier,ค่าเดิมสูงผิดปกติ,bool,-,False
+flag_imputed,ถูกแทนด้วยค่ากลาง (รวม 3 กรณี),bool,-,False
+temperature_c,อุณหภูมิภายนอก (ชุดเดียวทุกอาคาร),float,องศาเซลเซียส,23.7
+relative_humidity_percent,ความชื้นสัมพัทธ์ (ชุดเดียวทุกอาคาร),float,ร้อยละ,90.5

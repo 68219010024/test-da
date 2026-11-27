@@ -1,0 +1,7 @@
+﻿stage,delta_kWh,running_total_kWh
+1 raw file (incl. duplicates),275239.977,275239.977
+2 remove 100 duplicate rows,-84.578,275155.399
+3 negative values replaced (18 rows),30.547,275185.946
+4 missing values filled (35 rows),30.949,275216.895
+5 spikes replaced (21 rows),-468.549,274748.346
+final energy_clean total (check),,274748.346

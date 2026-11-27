@@ -1,0 +1,6 @@
+﻿step,issue,rows_affected,action
+1,timestamp cannot be parsed,0,none found
+1,duplicate rows (exact copies),100,"dropped, kept first copy"
+2,energy_kwh missing,35,filled with median of same meter x hour x day type
+3,"negative energy_kwh (all equal -0.5, looks like an error code)",18,"treated as invalid, replaced by cell median, flag kept"
+3,isolated spikes 24-34x normal (rule: Q3+3*IQR of cell and >3x cell median),21,kept in outliers_log.csv with raw value; replaced by cell median in energy_clean; needs meter check

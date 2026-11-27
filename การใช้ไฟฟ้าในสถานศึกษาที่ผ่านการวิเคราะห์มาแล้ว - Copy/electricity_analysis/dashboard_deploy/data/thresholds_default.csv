@@ -1,0 +1,7 @@
+﻿threshold,default_value,meaning
+off_share_pct,15.0,off-hours share of a room's own kWh above this = needs checking
+evening_ratio,3.0,mean kWh at 18-22 vs other off-hours above this = evening block
+standby_x_baseline,2.0,off-hours baseline above this x campus median = continuous baseline
+impact_high_pct,2.0,estimated excess >= this % of campus kWh = high impact
+impact_mid_pct,0.5,estimated excess >= this % of campus kWh = medium impact
+small_group_rooms,6.0,groups with fewer rooms than this get a warning label
